@@ -9,7 +9,11 @@
     "activityBarBadge.foreground": "#15202b",
     "statusBar.background": "#b52e31",
     "statusBar.foreground": "#e7e7e7",
-    "statusBarItem.hoverBackground": "#d04649"
+    "statusBarItem.hoverBackground": "#d04649",
+    "titleBar.activeBackground": "#b52e31",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#b52e3199",
+    "titleBar.inactiveForeground": "#e7e7e799"
   },
   "debug.openExplorerOnEnd": true,
   "editor.tabSize": 2,
@@ -43,5 +47,6 @@
   "gitlens.menus": {
     "editorGroup": false
   },
-  "ng-evergreen.upgradeChannel": "Latest"
+  "ng-evergreen.upgradeChannel": "Latest",
+  "peacock.color": "#b52e31"
 }
