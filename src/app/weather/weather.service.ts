@@ -6,6 +6,13 @@ import { environment } from 'src/environments/environment'
 
 import { ICurrentWeather } from '../interface'
 
+export interface IWeatherService {
+  getCurrentWeather(
+    city: string,
+    state: string,
+    country: string
+  ): Observable<ICurrentWeather>
+}
 interface ICurrentWeatherData {
   weather: [
     {
@@ -27,13 +34,15 @@ interface ICurrentWeatherData {
 @Injectable({
   providedIn: 'root',
 })
-export class WeatherService {
+export class WeatherService implements IWeatherService {
+  private state: string
   constructor(private httpClient: HttpClient) {}
   getCurrentWeather(
     city: string,
     state: string,
     country: string
   ): Observable<ICurrentWeather> {
+    this.state = state
     const uriParams = new HttpParams()
       .set('q', `${city}, ${state}, ${country}`)
       .set('appid', environment.appId)
@@ -48,6 +57,7 @@ export class WeatherService {
   transformToICurrentWeather(data: ICurrentWeatherData): ICurrentWeather {
     return {
       city: data.name,
+      state: this.state,
       country: data.sys.country,
       date: data.dt * 1000,
       image: `http://openweathermap.org/img/w/${data.weather[0].icon}.png`,
