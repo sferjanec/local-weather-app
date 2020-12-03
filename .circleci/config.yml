@@ -13,11 +13,11 @@ jobs:
       - save_cache:
           key: v1-dependencies-{{ checksum "package-lock.json" }}
           paths:
-           - ~/.npm
+            - ~/.npm
       - run: npm run style
       - run: npm run lint
       - run: npm run build:prod
-      - run: npm run test:coverage -- --watch=false
+      - run: npm run test -- --watch=false
       - run: npm run e2e
       - run:
           name: Tar & Gzip compiled app
